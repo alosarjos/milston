@@ -5,7 +5,7 @@ use crate::helper::{AutoIncrementalMap, MapId};
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 
-type TaskId = MapId;
+pub type TaskId = MapId;
 type Tasks = AutoIncrementalMap<Task>;
 
 #[derive(Serialize, Deserialize)]
