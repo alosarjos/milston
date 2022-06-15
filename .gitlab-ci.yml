@@ -13,7 +13,7 @@ test:
   script:
     - rustc --version
     - cargo --version
-    - cargo test --verbose
+    - cargo test
 
 pages:
   stage: doc
