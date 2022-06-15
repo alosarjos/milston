@@ -1,0 +1,31 @@
+[package]
+name = "milston"
+version = "0.1.0"
+authors = ["José Miguel Sarasola<alosarjos@gmail.com>"]
+homepage = "https://git.sr.ht/~alosarjos/igdb-provider"
+repository = "https://git.sr.ht/~alosarjos/igdb-provider"
+license = "MIT"
+edition = "2021"
+
+[dependencies]
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0" }
+
+# Config & Data system dirs
+directories = { version = "4.0" }
+
+# Http data provider
+reqwest = { version = "0.11", optional = true }
+
+# Url struct
+url = { version = "2.2", features = ["serde"], optional = true }
+
+#DateTime
+chrono = { version = "0.4", features = ["serde"] } 
+
+[dev-dependencies]
+tokio = { version = "1.19", features = ["macros", "rt"] }
+
+[features]
+http = ["dep:reqwest", "dep:url"] 
