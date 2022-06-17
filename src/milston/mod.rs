@@ -1,13 +1,46 @@
-mod config;
+pub mod config;
 pub mod data;
 mod provider;
 
-use self::config::data_source::DataSource;
+use self::config::DataSource;
 use self::data::{Data, ProjectId};
 use self::provider::DataProvider;
-use self::{config::Config, data::project::Project};
+use self::{config::Config, data::Project};
 use crate::error::Result;
 
+/// Milston is the entry point to the API, is the struct that controls all the
+/// data and the way it should be saved/loaded.
+///
+/// A full example on how to use it:
+///
+/// ```
+/// use milston::{config::{Config, DataSource},  
+///         data::{Data, Project, Task},
+///         Milston,
+///         Error as MilstonError};
+///
+/// use std::{path::PathBuf, str::FromStr};
+///
+/// #[tokio::main]
+/// async fn main() -> Result<(), MilstonError> {
+///     let config = Config {data_source:
+///                     DataSource::File(
+///                         PathBuf::from_str("/tmp/data.json")
+///                         .unwrap()
+///                     )};
+///
+///     let mut milston = Milston::new(Data::default(), config);
+///     let mut project = Project::new("Milston");
+///     let task = Task::new("Docs", "Learn to write docs and document the lib");
+///
+///     project.add_task(task);
+///     milston.add_project(project);
+///     milston.save_data().await?;
+///
+///     Ok(())
+/// }
+/// ```
+///
 #[derive(Default)]
 pub struct Milston {
     data: Data,
@@ -81,8 +114,9 @@ impl Milston {
 
 #[cfg(test)]
 mod tests {
+
     use super::{
-        data::{project::task::Task, project::Project},
+        data::{Project, Task},
         Milston,
     };
 

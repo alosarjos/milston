@@ -7,9 +7,10 @@ pub mod http;
 use self::http::HttpDataProvider;
 
 use self::file::FileDataProvider;
-use super::config::data_source::DataSource;
 use crate::error::Result;
 use serde::{de::DeserializeOwned, Serialize};
+
+use super::config::DataSource;
 
 pub struct DataProvider;
 

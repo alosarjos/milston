@@ -1,3 +1,5 @@
+//! This is a test
+
 pub mod task;
 
 use self::task::{Task, TaskStatus};
@@ -8,6 +10,7 @@ use serde::{Deserialize, Serialize};
 pub type TaskId = MapId;
 type Tasks = AutoIncrementalMap<Task>;
 
+/// Represents a group of related tasks.
 #[derive(Serialize, Deserialize)]
 pub struct Project {
     title: String,

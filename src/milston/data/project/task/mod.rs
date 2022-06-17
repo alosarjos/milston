@@ -1,6 +1,7 @@
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 
+/// The most basic unit of task organization
 #[derive(Serialize, Deserialize)]
 pub struct Task {
     pub title: String,
