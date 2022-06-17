@@ -13,12 +13,12 @@ test:
   script:
     - rustc --version
     - cargo --version
-    - cargo test
+    - cargo test --features=full
 
 pages:
   stage: doc
   script:
-    - cargo doc --no-deps
+    - cargo doc --features=full --no-deps
     - mv target/doc public
     - echo '<meta http-equiv="refresh" content="0; url=milston">' > public/index.html
   artifacts:
