@@ -1,9 +1,10 @@
 [package]
 name = "milston"
+description = "Library for creating Project management apps"
 version = "0.1.0"
 authors = ["José Miguel Sarasola<alosarjos@gmail.com>"]
-homepage = "https://git.sr.ht/~alosarjos/igdb-provider"
-repository = "https://git.sr.ht/~alosarjos/igdb-provider"
+homepage = "https://gitlab.com/alosarjos/milston"
+repository = "https://gitlab.com/alosarjos/milston"
 license = "MIT"
 edition = "2021"
 
