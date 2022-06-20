@@ -3,7 +3,7 @@ image: 'rust:latest'
 stages:
   - test
   - doc
-  - build
+  - publish
 
 variables:
   CARGO_HOME: $CI_PROJECT_DIR/cargo
@@ -26,6 +26,14 @@ pages:
       - public
   only:
     - master
+
+publish:
+  stage: publish
+  script:
+    - cargo publish
+  only:
+    - master
+    - tags      
 
 cache:
   paths:
