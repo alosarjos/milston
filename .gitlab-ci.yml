@@ -32,8 +32,7 @@ publish:
   script:
     - cargo publish
   only:
-    - master
-    - tags      
+    - master && tags
 
 cache:
   paths:
