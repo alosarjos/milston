@@ -27,5 +27,19 @@ pub use project::{
 /// to the different parts contained inside a `Milston` instance.
 #[derive(Default, Deserialize, Serialize)]
 pub struct Data {
-    pub projects: Projects,
+    projects: Projects,
+}
+
+impl Data {
+    pub fn new(projects: Projects) -> Data {
+        Data { projects }
+    }
+
+    pub fn get_projects(&self) -> &Projects {
+        &self.projects
+    }
+
+    pub fn get_projects_mut(&mut self) -> &mut Projects {
+        &mut self.projects
+    }
 }

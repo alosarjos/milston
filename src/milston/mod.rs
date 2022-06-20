@@ -17,7 +17,7 @@ use crate::error::Result;
 /// use milston::{config::{Config, DataSource},  
 ///         data::{Data, Project, Task},
 ///         Milston,
-///         Error as MilstonError};
+///         error::Error as MilstonError};
 ///
 /// use std::{path::PathBuf, str::FromStr};
 ///
@@ -60,27 +60,27 @@ impl Milston {
 
     /// Get the list of projects
     pub fn get_projects(&self) -> Vec<&Project> {
-        self.data.projects.get_values()
+        self.data.get_projects().get_values()
     }
 
     /// Get an specific project by Id
     pub fn get_project(&self, id: ProjectId) -> Option<&Project> {
-        self.data.projects.get(id)
+        self.data.get_projects().get(id)
     }
 
     /// Returns a mutable reference to a project, allowing it's modification.
     pub fn get_project_mut(&mut self, id: ProjectId) -> Option<&mut Project> {
-        self.data.projects.get_mut(id)
+        self.data.get_projects_mut().get_mut(id)
     }
 
     /// Adds a new project and auto-generates and Id for it
     pub fn add_project(&mut self, project: Project) -> ProjectId {
-        self.data.projects.add(project)
+        self.data.get_projects_mut().add(project)
     }
 
     /// Removes a project and returns it
     pub fn remove_project(&mut self, id: ProjectId) -> Option<Project> {
-        self.data.projects.remove(id)
+        self.data.get_projects_mut().remove(id)
     }
 
     /// Sets the data source from the available list (File or Http for example)
