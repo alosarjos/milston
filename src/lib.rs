@@ -34,10 +34,8 @@
 //! milston = { version = "0.1", features = ["http"] }
 //! ```
 
-mod error;
 mod helper;
-
 mod milston;
 
-pub use crate::error::Error;
+pub mod error;
 pub use crate::milston::{config, data, Milston};
